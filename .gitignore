@@ -277,3 +277,4 @@ TSWLatexianTemp*
 
 /kinematics/sections/*
 !/kinematics/sections/*.tex
+!/kinematics/sections/latexmkrc
