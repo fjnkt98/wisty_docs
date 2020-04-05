@@ -19,6 +19,7 @@
     \label{eq:constraint}
   \end{equation}
 
+  \noindent
   ここで，$\hat{\dot{\theta}} = 2l\dot{\theta}$として式\ref{eq:constraint}に代入すると，式\ref{eq:constraint}は図に示すような$\dot{x}\dot{y}\hat{\dot{\theta}}$座標系における正八面体の内部領域を表す．
   ロボットへの入力速度ベクトル$\vec{x} = (\dot{x}, \dot{y}, \dot{\theta})^T$をこの座標系の位置ベクトルであるとしたとき，位置ベクトルは正八面体の内部に存在していなければならない．
 
@@ -84,7 +85,9 @@
     \caption{Range of \xi}
   \end{figure}
 
-  以上を踏まえて立方体の式を極座標で表すと，
+  \noindent
+  以上を踏まえて立方体の式を極座標で表すと，式\ref{eq:polarized_cube1}のようになる．
+  式\ref{eq:polarized_cube1}の各式は，立方体領域の各面を表す．
 
   \begin{subequations}
     \begin{empheq}[left=\empheqlbrace]{alignat=2}
@@ -95,7 +98,54 @@
       \beta = -1 & \quad (\frac{5\pi}{4} \leq \phi < \frac{7\pi}{4}, \xi_{\text{th}} \leq \xi \leq (\pi - \xi_{\text{th}})) \\
       \gamma = -1 & \quad (\xi > (\pi - \xi_{\text{th}}))
     \end{empheq}
-    \label{eq:polarized_cube}
+    \label{eq:polarized_cube1}
+  \end{subequations}
+
+  \noindent
+  ここで，$\alpha = \sigma_{\text{max}}\sin{\xi}\cos{\phi}$，$\beta = \sigma_{\text{max}}\sin{\xi}\sin{\phi}$，
+  $\gamma = \sigma_{\text{max}}\cos{\xi}$を式\ref{eq:polarized_cube1}に代入して整理すると，立方体の各面の式は式\ref{eq:polarized_cube2}のようになる．
+
+  \begin{subequations}
+    \begin{empheq}[left=\empheqlbrace]{align}
+      \sigma_{\text{max}} &= \frac{1}{\sin{\xi}\cos{\phi}} \\
+      \sigma_{\text{max}} &= \frac{1}{\sin{\xi}\sin{\phi}} \\
+      \sigma_{\text{max}} &= \frac{1}{\cos{\xi}} \\
+      \sigma_{\text{max}} &= \frac{-1}{\sin{\xi}\cos{\phi}} \\
+      \sigma_{\text{max}} &= \frac{-1}{\sin{\xi}\sin{\phi}} \\
+      \sigma_{\text{max}} &= \frac{-1}{\cos{\xi}}
+    \end{empheq}
+    \label{eq:polarized_cube2}
+  \end{subequations}
+
+  \noindent
+  また，$\sin{\xi} = \frac{\sqrt{\alpha^2+\beta^2}}{\sqrt{\alpha^2+\beta^2+\gamma^2}}$，
+  $\cos{\xi} = \frac{\gamma}{\sqrt{\alpha^2+\beta^2+\gamma^2}}$，
+  $\sin{\phi} = \frac{\beta}{\sqrt{\alpha^2+\beta^2}}$，
+  $\cos{\phi} = \frac{\alpha}{\sqrt{\alpha^2+\beta^2}}$
+  を式\ref{eq:polarized_cube2}に代入すると，式\ref{eq:polarized_cube3}のように$\sigma_{\text{max}}$を$\alpha$，$\beta$，$\gamma$で表すことができる．
+  
+  \begin{subequations}
+    \begin{empheq}[left=\empheqlbrace]{align}
+      \sigma_{\text{max}} &= \frac{\sqrt{\alpha^2+\beta^2+\gamma^2}}{\alpha} \\
+      \sigma_{\text{max}} &= \frac{\sqrt{\alpha^2+\beta^2+\gamma^2}}{\beta} \\
+      \sigma_{\text{max}} &= \frac{\sqrt{\alpha^2+\beta^2+\gamma^2}}{\gamma} \\
+      \sigma_{\text{max}} &= \frac{\sqrt{\alpha^2+\beta^2+\gamma^2}}{-\alpha} \\
+      \sigma_{\text{max}} &= \frac{\sqrt{\alpha^2+\beta^2+\gamma^2}}{-\beta} \\
+      \sigma_{\text{max}} &= \frac{\sqrt{\alpha^2+\beta^2+\gamma^2}}{-\gamma}
+    \end{empheq}
+    \label{eq:polarized_cube3}
+  \end{subequations}
+
+  また，各面の定義域を$\alpha$，$\beta$，$\gamma$で表し，$\sigma_{\text{max}}$を$|\vec{\epsilon}| = \sqrt{\alpha^2+\beta^2+\gamma^2}$で除して$\sigma$を求めると，
+  信号強度$\sigma$は最終的に式\ref{eq:polarized_cube4}で求めることができる．
+
+  \begin{subequations}
+    \begin{empheq}[left={\sigma = \empheqlbrace}]{alignat=2}
+      |\alpha| & \quad (|\alpha| \geq |\beta| \geq |\gamma|, |\alpha| \geq |\gamma| > |\beta|) \\
+      |\beta|  & \quad (|\beta| > |\alpha| \geq |\gamma|, |\beta| > |\gamma| > |\alpha|) \\
+      |\gamma| & \quad (|\gamma| > |\alpha| \geq |\beta|, |\gamma| > |\beta| > |\alpha|)
+    \end{empheq}
+    \label{eq:polarized_cube4}
   \end{subequations}
 
 \end{document}
